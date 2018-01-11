@@ -19,3 +19,39 @@ class WelcomePlugin(Plugin):
     def command_ping(self, event):
         print('Am I alive?')
         event.msg.reply('pong')
+
+    #Lets spam ping the crap out of Web kthx
+    @Plugin.command('boop')
+    def command_web(self, event):
+        allowed_roles = {308698156130893825}
+        #lets only make it where admins can boop web as this might get spammed
+        if allowed_roles.intersection(event.msg.member.roles):
+            print('I have booped web')
+            x = 0
+            while x <= 50:
+             x= x + 1
+             print(x)
+             event.msg.reply('boop <@230889918094639107>, Stop ignoring Ares pls. <a:PorgParty:398666256288317453>')
+             time.sleep(1)
+            print('oof Done booping for now')
+        if not allowed_roles.intersection(event.msg.member.roles):
+            #To prevent aboose
+            print('Ugh Oh. Someone tried to boop Web and they are not an admin.')
+            event.msg.reply('<:redTick:400091719082704908> I\'m sorry, but ony Server Admins can boop Web. If you think this is a mistake, please DM Mod Mail.')
+
+    @Plugin.command('mod')
+    def command_mod(self, event):
+        allowed_roles = {308698019770007562}
+        #Lets make it where only mods can pop this command
+        if allowed_roles.intersection(event.msg.member.roles):
+            print('I am getting ready to spam, hold your shit pls')
+            spam = 0
+            while spam <= 5:
+                spam = spam + 1
+                print(spam)
+                event.msg.reply('Please let the mods, mod. No back seat modding allowed!')
+                time.sleep(1)
+            print('Done telling the plebs not to back seat mod')
+        if not allowed_roles.intersection(event.msg.member.roles):
+            #Throw out and error to the pleb who isnt a mod. LET THE MODS MOD DAMNIT
+            event.msg.reply('<:redTick:400091719082704908> I\'m sorry, you are not a mod. Only Mods can run this command.')
